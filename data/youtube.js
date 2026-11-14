@@ -3,6 +3,18 @@
    Pour corriger une vidéo (catégories, rapport, masquer), utiliser data/videos.js */
 window.LUDOLABO_YOUTUBE = [
   {
+    "titre": "🐺 J'ai interrogé des experts du Loup-garou... voilà leurs meilleures strat' de VILLAGEOIS",
+    "plateforme": "youtube",
+    "format": "court",
+    "id": "9-qYsFqEre8",
+    "date": "2026-11-14",
+    "categories": [
+      "Am",
+      "Ex",
+      "As"
+    ]
+  },
+  {
     "titre": "🐺 J'ai interrogé des experts du loup-garou... voilà leur strat' de loup!",
     "plateforme": "youtube",
     "format": "court",
