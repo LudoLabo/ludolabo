@@ -426,7 +426,26 @@
   };
 
   /* ---------- Init ---------- */
+  /* ---------- Mode jour / nuit ---------- */
+  function initTheme() {
+    const btn = $(".theme-toggle");
+    if (!btn) return;
+    const root = document.documentElement;
+    const mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+    const current = () => root.getAttribute("data-theme") || (mq && mq.matches ? "dark" : "light");
+    const label = () => btn.setAttribute("aria-label", current() === "dark" ? "Passer en mode jour" : "Passer en mode nuit");
+    label();
+    btn.addEventListener("click", () => {
+      const next = current() === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem("ludolabo-theme", next); } catch (e) {}
+      label();
+    });
+    if (mq && mq.addEventListener) mq.addEventListener("change", label);
+  }
+
   function init() {
+    initTheme();
     const toggle = $(".nav-toggle");
     const nav = $(".nav");
     if (toggle && nav) toggle.addEventListener("click", () => {

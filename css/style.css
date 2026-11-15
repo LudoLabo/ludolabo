@@ -556,3 +556,30 @@ p { margin: 0 0 1em; }
   .element .ct { display: none; }
   .stat { min-width: 0; flex: 1; }
 }
+
+/* ---------- Bouton mode jour / nuit ---------- */
+.theme-toggle {
+  flex: none; width: 44px; height: 44px; margin-left: 10px; border: 2px solid var(--ink); border-radius: 12px;
+  background: var(--card); color: var(--ink); cursor: pointer; display: grid; place-items: center;
+  box-shadow: var(--shadow-sm); transition: transform .15s, box-shadow .15s, background .15s;
+}
+.theme-toggle:hover { transform: translate(-2px, -2px); box-shadow: var(--shadow); }
+.theme-toggle:active { transform: translate(1px, 1px); box-shadow: none; }
+.theme-toggle svg { width: 22px; height: 22px; grid-area: 1 / 1; transition: transform .35s, opacity .25s; }
+.theme-toggle .i-sun { opacity: 0; transform: rotate(-90deg) scale(.5); }
+:root[data-theme="dark"] .theme-toggle .i-sun { opacity: 1; transform: none; color: var(--yellow); }
+:root[data-theme="dark"] .theme-toggle .i-moon { opacity: 0; transform: rotate(90deg) scale(.5); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .i-sun { opacity: 1; transform: none; color: var(--yellow); }
+  :root:not([data-theme="light"]) .theme-toggle .i-moon { opacity: 0; transform: rotate(90deg) scale(.5); }
+}
+/* le logo a un contour sombre : on lui met un fond clair la nuit */
+:root[data-theme="dark"] .brand img { background: #fffdf7; border-radius: 12px; padding: 3px; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .brand img { background: #fffdf7; border-radius: 12px; padding: 3px; }
+}
+body { transition: background-color .25s, color .25s; }
+@media (max-width: 880px) {
+  .theme-toggle { margin-left: auto; }
+  .nav-toggle { margin-left: 10px; }
+}
